@@ -1,0 +1,204 @@
+<style type="text/css">
+
+            body{
+                background-image: url("http://www.rolegal.com/system/cms/themes/default/img/set-up-romanian-company.jpg.jpg");
+                background-size:cover;
+                background-repeat: no-repeat;
+                background-attachment:scroll;
+                background-size: 2560px 1600px;
+                padding:10px;
+            }
+            
+             label
+             {
+                cursor: default;
+                font-size:24px;
+                color:blue;
+              }
+               
+              h3
+              {
+                font-size:70px;
+                color:blue;
+                text-align: center;
+                 
+               }
+               
+            
+               tr
+               {
+                 
+                  font-size:24px;
+                color:black;
+               }
+               
+               option
+               {
+                 font-size:24px;
+                 
+               }
+               
+               select
+               {
+                font-size:24px;
+                color:blue;
+                background-color:grey;
+               }
+               
+             
+                     label
+               {
+                cursor: default;
+                font-size:24px;
+                 color:black;
+               }
+              
+               th
+               {
+                font-size:24px;
+                color:blue;
+                 
+               }
+               
+                h3
+               {
+                font-size:70px;
+                 color:blue;
+                text-align: center;
+                 
+               }
+               
+               input
+               {
+                padding: 28px 28px;
+                text-align: center;
+                font-size:24px;
+                color:blue;
+                background-color:white;
+                margin-right: auto;
+                
+               }
+               table
+               {
+                   
+                       border-collapse: separate;
+                       display: table;
+                       border-spacing: 2px;
+                       border-color: grey;
+                       border-spacing: 0;
+                       border-collapse: collapse;
+               }
+               th{
+                       padding: 8px;
+                       line-height: 1.42857143;
+                       text-align: left;
+                       padding: 8px;
+   
+                      vertical-align: top;
+                      border-top: 1px solid #ddd;
+               }
+               td
+               {
+                   
+                   color:blackk;
+                   background-color:grey;
+                   font-size:24px;
+                   border: 1px solid red;
+               }
+               
+               a
+               {
+                   color:red;
+                   font-size:26px;
+                   background-color:grey;
+                   
+               }
+</style>
+
+<div>
+  <h3>CONNEXIONS</h3>
+  <table class="table table-striped">
+    <tr>
+      <th>NAME</th>
+      <th>CITY</th>
+      <th>COMPANY</th>
+      <th>PC</th>
+    </tr>
+    <tr ng-repeat="company in companies" ng-include="getTemplate(company)">
+    </tr>
+  </table>
+  <form name="addForm">
+   <label for="companyName">NAME</label>
+   <input type="text" id="companyName" ng-model="c.Name" />
+    <label for="companyCity">CITY</label>
+    <select id="companyCity" ng-model="c.City" name="City" required minlength="3">
+        <option>Bucuresti</option>
+        <option>Ploiesti</option>
+        <option>Brasov</option>
+        <option>Timisoara</option>
+        <option>Iasi</option>
+    </select>
+    
+     <label for="companyCompany">COMPANY</label>
+    <select id="companyCompany" ng-model="c.Company" name="Company" required minlength="3" >
+        <option>Alpha Bank</option>
+        <option>Genpact</option>
+        <option>TotalSoft</option>
+        <option>OMV</option>
+        <option>BRD</option>
+        <option>Conpet</option>
+        <option>Libra Bank</option>
+        <option>Vodafone</option>
+        <option>RomGaz</option>
+    </select>
+    
+    <label for="companyPC">PC</label>
+    <select id="companyPC" ng-model="c.PC" name="PC" required minlength="3" >
+        <option>120000</option>
+        <option>240000</option>
+        <option>66000</option>
+        <option>300000</option>
+        <option>50000</option>
+    </select>
+    <input type="button" value="FINISH" ng-click="addCompany(c)"/>
+  </form>
+
+  <script type="text/ng-template" id="display">
+    <td>
+      {{company.Name}}
+    </td>
+    <td>
+      {{company.City}}
+    </td>
+     <td>
+      {{company.Company}}
+    </td>
+      <td>
+      {{company.PC}}
+    </td>
+    <td>
+      <input type="button" value="DELETE" ng-click="deleteCompany(company)"/>
+      <input type="button" value="EDIT" ng-click="editCompany(company)" />
+    </td>
+  </script>
+  
+  <script type="text/ng-template" id="edit">
+    <td>
+      <input type="text" ng-model="company.Name" />
+    </td>
+    <td>
+      <input type="text" ng-model="company.City" />
+    </td>
+    <td>
+      <input type="text" ng-model="company.Company" />
+    </td>
+     <td>
+      <input type="text" ng-model="company.PC" />
+    </td>
+    <td>
+      <input type="button" value="SAVE" ng-click="saveCompany(company)" " />
+      <input type="button" value="CANCEL" ng-click="cancelEditing()" />
+    </td>
+  </script>
+  <a type="button" ui-sref="subsidiaries">BACK</a>
+</div>

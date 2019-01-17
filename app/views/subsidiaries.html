@@ -1,0 +1,135 @@
+<style type="text/css">
+            body{
+                background-image: url("http://www.rolegal.com/system/cms/themes/default/img/set-up-romanian-company.jpg");
+                background-size:cover;
+                background-repeat: no-repeat;
+                background-attachment:scroll;
+                background-size: 2560px 1600px;
+                padding:10px;
+               }
+            
+               label
+               {
+                cursor: default;
+                font-size:30px;
+                 color:blue;
+               }
+              
+               th
+               {
+                font-size:30px;
+                color:blue;
+                 
+               }
+               
+                h3
+               {
+                font-size:75px;
+                 color:blue;
+                text-align: center;
+                 
+               }
+               
+               input
+               {
+                padding: 28px 28px;
+                text-align: center;
+                font-size:26px;
+                color:blue;
+                background-color:white;
+                margin-right: auto;
+                
+               }
+               table
+               {
+                   
+                       border-collapse: separate;
+                       display: table;
+                       border-spacing: 2px;
+                     
+                     
+               }
+               th{
+                       padding: 8px;
+                       line-height: 1.42857143;
+                       text-align: left;
+                       padding: 8px;
+   
+                      vertical-align: top;
+                      border-top: 1px solid #ddd;
+               }
+               td
+               {
+                   
+                   color:black;
+                   background-color:grey;
+                   font-size:26px;
+                   border: 1px solid red;
+               }
+               
+               a
+               {
+                   color:red;
+                   font-size:26px;
+                   
+                   
+               }
+</style>
+
+<body>
+<div>
+    <h3>REQUIRED INFORMATION</h3>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>NAME</th>
+          <th>CAEN</th>
+          <th>IN</th>
+          <th>FAX</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tr ng-repeat="subsidiary in subsidiaries" ng-include="getTemplate(subsidiary)">
+        </tr>
+    </table>
+    
+    <form>
+        <label for="Name">NAME</label>
+        <input type="text" id="subsidiariesName" ng-model="a.Name" />
+        <label for="SubsidiariesCaen">CAEN</label>
+        <input type="text" id="subsidiariesCaen" ng-model="a.Caen" />
+        <label for="SubsidiariesIn">IN</label>
+        <input type="text" id="subsidiariesIn" ng-model="a.In" />
+        <label for="SubsidiariesFax">FAX</label>
+        <input type="text" id="subsidiariesFax" ng-model="a.Fax" />
+        
+        <input type="button" value="ADD THE SUBSIDIARY" ng-click="addSubsidiary(a)" />
+        
+    </form>
+    
+    <script type="text/ng-template" id="display">
+        <td>{{subsidiary.Name}}</td>
+        <td>{{subsidiary.Caen}}</td>
+        <td>{{subsidiary.In}}</td>
+        <td>{{subsidiary.Fax}}</td>
+        <td>
+            <input type="button" value="DELETE" ng-click="deleteSubsidiary(subsidiary)"  />
+            <input type="button" value="EDIT" ng-click="editSubsidiary(subsidiary)"  />
+            <input type="button" value="NEXT STEP" ng-click="linkCompany(subsidiary)"/>
+        </td>
+    </script>
+    
+    <script type="text/ng-template" id="edit">
+        <td><input type="text" ng-model="subsidiary.Name" /></td>
+        <td><input type="text" ng-model="subsidiary.Caen"/></td>
+        <td><input type="text" ng-model="subsidiary.In" /></td>
+        <td><input type="text" ng-model="subsidiary.Fax"/></td>
+        <td>
+            <input type="button" value="SAVE" ng-click="saveSubsidiary(subsidiary)" />
+            <input type="button" value="CANCEL" ng-click="cancelEditing()" />
+        </td>
+    </script>
+</div>
+</body>
